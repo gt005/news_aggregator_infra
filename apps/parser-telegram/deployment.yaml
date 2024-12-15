@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: parser-telegram
+
+  labels:
+    app: parser-telegram
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: parser-telegram
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: parser-telegram
+
+    spec:
+      containers:
+      - name: parser-telegram
+        image: gt005/news_aggregator_telegram_parser:2b746a14be5e7efc4083d99bdab845efd3f854e7

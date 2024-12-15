@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: gt005/news_aggregator_frontend:2b746a14be5e7efc4083d99bdab845efd3f854e7
+        ports:
+          - containerPort: 5173
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 5173
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 5173
+          initialDelaySeconds: 15
+          periodSeconds: 20

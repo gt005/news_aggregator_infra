@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-news-data-processor
+  labels:
+    app: backend-news-data-processor
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backend-news-data-processor
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: backend-news-data-processor
+    spec:
+      containers:
+      - name: backend-news-data-processor
+        image: gt005/news_aggregator_backend_data_processor:2b746a14be5e7efc4083d99bdab845efd3f854e7
+        ports:
+          - containerPort: 8002
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8002
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8002
+          initialDelaySeconds: 15
+          periodSeconds: 20

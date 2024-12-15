@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - deployment.yaml
+  - service.yaml
+
+secretGenerator:
+  - name: backend-data-processor-secrets
+    envs:
+      - secrets.enc.yaml
+configMapGenerator:
+  - name: backend-data-processor-config
+    envs:
+      - configmaps.env
+
+generatorOptions:
+  disableNameSuffixHash: true
