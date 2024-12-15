@@ -5,14 +5,5 @@ resources:
   - deployment.yaml
   - service.yaml
 
-secretGenerator:
-  - name: frontend-secrets
-    envs:
-      - secrets.enc.yaml
-configMapGenerator:
-  - name: frontend-config
-    envs:
-      - configmaps.env
-
 generatorOptions:
   disableNameSuffixHash: true

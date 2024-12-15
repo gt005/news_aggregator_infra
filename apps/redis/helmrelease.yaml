@@ -20,5 +20,4 @@ spec:
       persistence:
         size: 1Gi
     auth:
-      enabled: true
-      existingSecret: redis
+      enabled: false

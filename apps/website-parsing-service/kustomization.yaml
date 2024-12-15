@@ -4,14 +4,6 @@ kind: Kustomization
 resources:
   - deployment.yaml
 
-secretGenerator:
-  - name: website-parsing-service-secrets
-    envs:
-      - secrets.enc.yaml
-configMapGenerator:
-  - name: website-parsing-service-config
-    envs:
-      - configmaps.env
 
 generatorOptions:
   disableNameSuffixHash: true
