@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: backend-news-data-processor
-        image: gt005/news_aggregator_backend_data_processor:2b746a14be5e7efc4083d99bdab845efd3f854e7
+        image: gt005/news_aggregator_backend_data_processor:60f0b711b46ae2bb54c3c7fe84c211f0db2eb512
         ports:
           - containerPort: 8002
         readinessProbe:
