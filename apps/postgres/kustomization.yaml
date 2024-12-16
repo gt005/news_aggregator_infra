@@ -5,7 +5,4 @@ namespace: default
 
 resources:
   - helmrelease.yaml
-secretGenerator:
-  - name: postgres-secrets
-    envs:
-      - secrets.enc.yaml
+  - secrets.enc.yaml

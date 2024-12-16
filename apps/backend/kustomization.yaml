@@ -6,11 +6,8 @@ namespace: default
 resources:
   - deployment.yaml
   - service.yaml
+  - secrets.enc.yaml
 
-secretGenerator:
-  - name: backend-secrets
-    envs:
-      - secrets.enc.yaml
 configMapGenerator:
   - name: backend-config
     envs:
