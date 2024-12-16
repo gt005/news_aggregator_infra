@@ -12,3 +12,6 @@ resources:
   - apps/parser-telegram
   - apps/backend-news-data-processor
   - ingress.yaml
+
+decryption:
+  provider: sops
