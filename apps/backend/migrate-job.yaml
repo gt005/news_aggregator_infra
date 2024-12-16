@@ -14,11 +14,6 @@ spec:
         - name: fastapi-backend
           image: gt005/news_aggregator_fastapi_backend:60f0b711b46ae2bb54c3c7fe84c211f0db2eb512
           imagePullPolicy: IfNotPresent
-          envFrom:
-            - configMapRef:
-                name: backend-config
-            - secretRef:
-                name: backend-secrets
           command: ["bash", "-c", "alembic upgrade heads"]
           resources:
             requests:

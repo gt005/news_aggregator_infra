@@ -29,11 +29,6 @@ spec:
         image: gt005/news_aggregator_fastapi_backend:60f0b711b46ae2bb54c3c7fe84c211f0db2eb512
         ports:
           - containerPort: 8000
-        envFrom:
-          - secretRef:
-              name: backend-secrets
-          - configMapRef:
-              name: backend-config
         readinessProbe:
           httpGet:
             path: /health
