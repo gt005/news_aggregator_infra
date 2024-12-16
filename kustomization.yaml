@@ -12,6 +12,3 @@ resources:
   - apps/parser-telegram
   - apps/backend-news-data-processor
   - ingress.yaml
-
-transformers:
-  - kustomize/plugins/kustomize.config.k8s.io/v1beta1/SecretGenerator/ksops/transformer.yaml

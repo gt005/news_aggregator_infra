@@ -6,6 +6,10 @@ spec:
   backoffLimit: 1
   template:
     spec:
+      decryption:
+        provider: sops
+        secretRef:
+          name: backend-secrets
       restartPolicy: Never
       imagePullSecrets:
         - name: regcred

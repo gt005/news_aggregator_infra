@@ -13,15 +13,5 @@ configMapGenerator:
     envs:
       - configmaps.env
 
-secretGenerator:
-  - name: backend-secrets
-    files:
-      - secrets.enc.yaml
-    options:
-      disableNameSuffixHash: true
-
-transformers:
-  - secret-transformer.yaml
-
 generatorOptions:
   disableNameSuffixHash: true

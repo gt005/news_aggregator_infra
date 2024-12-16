@@ -1,4 +1,0 @@
-apiVersion: builtin
-kind: KustomizePlugin
-metadata:
-  name: ksops-transformer
