@@ -5,4 +5,4 @@ namespace: default
 
 resources:
   - helmrelease.yaml
-  - secrets.enc.yaml
+  - service.yaml
