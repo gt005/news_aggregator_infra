@@ -11,8 +11,8 @@ spec:
         - name: regcred
       automountServiceAccountToken: false
       containers:
-        - name: backend
-          image: backend
+        - name: fastapi-backend
+          image: gt005/news_aggregator_fastapi_backend:60f0b711b46ae2bb54c3c7fe84c211f0db2eb512
           imagePullPolicy: IfNotPresent
           envFrom:
             - configMapRef:
