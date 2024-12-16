@@ -10,8 +10,8 @@ spec:
       chart: redis
       sourceRef:
         kind: HelmRepository
-        name: bitnami
-      version: ~18
+        name: default
+      version: 16.6.0
   interval: 24h
   values:
     fullnameOverride: redis

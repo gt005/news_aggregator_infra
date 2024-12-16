@@ -10,16 +10,16 @@ spec:
       chart: postgresql
       sourceRef:
         kind: HelmRepository
-        name: bitnami
-      version: 12.5.6
+        name: default
+      version: 10.3.0
   interval: 10m0s
   timeout: 5m0s
   values:
     fullnameOverride: postgres
     image:
-      registry: mirror.gcr.io
-      repository: bitnami/postgresql
-      tag: 15.3.0
+      registry: docker.io
+      repository: postgres
+      tag: 15.3
     auth:
       username: newsFusion
       database: apiServiceDb
