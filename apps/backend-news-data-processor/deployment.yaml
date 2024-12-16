@@ -29,15 +29,3 @@ spec:
               name: backend-data-processor-secrets
           - configMapRef:
               name: backend-data-processor-config
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: 8002
-          initialDelaySeconds: 5
-          periodSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 8002
-          initialDelaySeconds: 15
-          periodSeconds: 20
