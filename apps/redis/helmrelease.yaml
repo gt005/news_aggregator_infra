@@ -10,10 +10,13 @@ spec:
       chart: redis
       sourceRef:
         kind: HelmRepository
-        name: default
-      version: 16.6.0
+        name: bitnami
+      version: ~18
   interval: 24h
   values:
+    image:
+      registry: mirror.gcr.io
+      repository: redis
     fullnameOverride: redis
     architecture: standalone
     master:
