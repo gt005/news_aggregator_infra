@@ -6,13 +6,22 @@ namespace: default
 resources:
   - deployment.yaml
   - service.yaml
-  - secrets.enc.yaml
   - migrate-job.yaml
 
 configMapGenerator:
   - name: backend-config
     envs:
       - configmaps.env
+
+secretGenerator:
+  - name: backend-secrets
+    files:
+      - secrets.enc.yaml
+    options:
+      disableNameSuffixHash: true
+
+transformers:
+  - secret-transformer.yaml
 
 generatorOptions:
   disableNameSuffixHash: true
