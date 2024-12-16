@@ -13,5 +13,11 @@ resources:
   - apps/backend-news-data-processor
   - ingress.yaml
 
-decryption:
-  provider: sops
+spec:
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
