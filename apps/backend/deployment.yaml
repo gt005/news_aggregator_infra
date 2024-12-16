@@ -19,16 +19,6 @@ spec:
       labels:
         app: fastapi-backend
     spec:
-      initContainers:
-        - name: migrate
-          image: groundnuty/k8s-wait-for:no-root-v2.0
-          imagePullPolicy: IfNotPresent
-          args: ["job", "backend-migrate"]
-          envFrom:
-            - configMapRef:
-                name: backend-config
-            - secretRef:
-                name: backend-secrets
       containers:
       - name: fastapi-backend
         image: gt005/news_aggregator_fastapi_backend:60f0b711b46ae2bb54c3c7fe84c211f0db2eb512
