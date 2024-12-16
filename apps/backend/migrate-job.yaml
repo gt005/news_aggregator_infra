@@ -16,7 +16,7 @@ spec:
           imagePullPolicy: IfNotPresent
           envFrom:
             - configMapRef:
-                name: backend-secrets
+                name: backend-config
             - secretRef:
                 name: backend-secrets
           command: ["bash", "-c", "alembic upgrade heads"]
