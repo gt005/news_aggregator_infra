@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: backend-migrate
+spec:
+  backoffLimit: 1
+  template:
+    spec:
+      restartPolicy: Never
+      imagePullSecrets:
+        - name: regcred
+      automountServiceAccountToken: false
+      containers:
+        - name: backend
+          image: backend
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: backend-config
+            - secretRef:
+                name: backend-secrets
+          command: ["bash", "-c", "alembic upgrade heads"]
+          resources:
+            requests:
+              ephemeral-storage: "512Mi"
+            limits:
+              ephemeral-storage: "1024Mi"

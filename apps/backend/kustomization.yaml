@@ -7,6 +7,7 @@ resources:
   - deployment.yaml
   - service.yaml
   - secrets.enc.yaml
+  - migrate-job.yaml
 
 configMapGenerator:
   - name: backend-config
