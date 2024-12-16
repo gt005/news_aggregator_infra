@@ -38,7 +38,6 @@ spec:
         accessModes:
           - ReadWriteOnce
         size: 3Gi
-    primary:
       extraEnv:
         - name: POSTGRES_USER
           valueFrom:
