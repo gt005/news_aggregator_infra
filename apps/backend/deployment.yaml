@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: fastapi-backend
-        image: gt005/news_aggregator_fastapi_backend:67c4e66312614e8ce0d54885738a40025fe2c4e5
+        image: gt005/news_aggregator_fastapi_backend:db071a03bc86c467b6738c9257b2ed4033800cd9
         envFrom:
           - configMapRef:
               name: backend-config
