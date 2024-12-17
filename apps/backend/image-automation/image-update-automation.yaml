@@ -1,4 +1,4 @@
-apiVersion: image.toolkit.fluxcd.io/v1beta1
+apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageUpdateAutomation
 metadata:
   name: backend-update-automation
@@ -14,6 +14,15 @@ spec:
       namespace: default
   git:
     repository: https://github.com/gt005/news_aggregator_infra.git
-    branch: main
+    checkout:
+      ref:
+        branch: main
+    commit:
+      author:
+        email: fluxcd[bot]@users.noreply.github.com
+        name: fluxcd[bot]
+      messageTemplate: "{{range .Updated.Images}}{{println .}}{{end}}"
+    push:
+      branch: main
     secretRef:
       name: git-credentials
