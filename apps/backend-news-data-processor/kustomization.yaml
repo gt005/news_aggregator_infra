@@ -6,6 +6,9 @@ namespace: default
 resources:
   - deployment.yaml
   - service.yaml
+  - image-automation/image-repository.yaml
+  - image-automation/image-policy.yaml
+  - image-automation/image-update-automation.yaml
 
 configMapGenerator:
   - name: backend-data-processor-config

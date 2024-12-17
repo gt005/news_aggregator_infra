@@ -1,0 +1,19 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageUpdateAutomation
+metadata:
+  name: frontend-update-automation
+spec:
+  imageRepositoryRef:
+    name: frontend
+  update:
+    strategy: Setters
+    fieldRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: frontend
+      namespace: default
+  git:
+    repository: https://github.com/gt005/news_aggregator_infra.git
+    branch: main
+    secretRef:
+      name: git-credentials

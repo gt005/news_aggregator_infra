@@ -1,0 +1,7 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: backend-news-data-processor
+spec:
+  image: docker.io/gt005/news_aggregator_backend_news_data_processor
+  interval: 1m

@@ -1,0 +1,7 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: backend
+spec:
+  image: docker.io/gt005/news_aggregator_fastapi_backend
+  interval: 1m

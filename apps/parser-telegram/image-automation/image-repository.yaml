@@ -1,0 +1,7 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: parser-telegram
+spec:
+  image: docker.io/gt005/news_aggregator_telegram_parser
+  interval: 1m
