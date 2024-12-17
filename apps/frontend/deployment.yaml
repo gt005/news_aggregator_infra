@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: gt005/news_aggregator_frontend:60f0b711b46ae2bb54c3c7fe84c211f0db2eb512
+        image: gt005/news_aggregator_frontend:67c4e66312614e8ce0d54885738a40025fe2c4e5
         ports:
           - name: http
             containerPort: 5173
