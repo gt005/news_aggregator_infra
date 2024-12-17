@@ -121,7 +121,7 @@ spec:
 apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageUpdateAutomation
 metadata:
-  name: staging
+  name: backend-update-automation
 spec:
   interval: 1m0s
   sourceRef:
@@ -142,5 +142,3 @@ spec:
   update:
     path: /apps
     strategy: Setters
-  secretRef:
-    name: git-credentials
