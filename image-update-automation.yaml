@@ -3,6 +3,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageRepository
 metadata:
   name: website-parsing-service
+  namespace: flux-system
 spec:
   image: docker.io/gt005/news_aggregator_website_parser
   interval: 1m0s
@@ -11,6 +12,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImagePolicy
 metadata:
   name: website-parsing-service
+  namespace: flux-system
 spec:
   imageRepositoryRef:
     name: website-parsing-service
@@ -27,6 +29,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageRepository
 metadata:
   name: parser-telegram
+  namespace: flux-system
 spec:
   image: docker.io/gt005/news_aggregator_telegram_parser
   interval: 1m0s
@@ -35,6 +38,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImagePolicy
 metadata:
   name: parser-telegram
+  namespace: flux-system
 spec:
   imageRepositoryRef:
     name: parser-telegram
@@ -51,6 +55,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageRepository
 metadata:
   name: frontend
+  namespace: flux-system
 spec:
   image: docker.io/gt005/news_aggregator_frontend
   interval: 1m0s
@@ -59,6 +64,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImagePolicy
 metadata:
   name: frontend
+  namespace: flux-system
 spec:
   imageRepositoryRef:
     name: frontend
@@ -75,6 +81,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageRepository
 metadata:
   name: backend
+  namespace: flux-system
 spec:
   image: docker.io/gt005/news_aggregator_fastapi_backend
   interval: 1m0s
@@ -83,6 +90,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImagePolicy
 metadata:
   name: backend
+  namespace: flux-system
 spec:
   imageRepositoryRef:
     name: backend
@@ -99,6 +107,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageRepository
 metadata:
   name: backend-news-data-processor
+  namespace: flux-system
 spec:
   image: docker.io/gt005/news_aggregator_backend_news_data_processor
   interval: 1m0s
@@ -107,6 +116,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImagePolicy
 metadata:
   name: backend-news-data-processor
+  namespace: flux-system
 spec:
   imageRepositoryRef:
     name: backend-news-data-processor
@@ -122,6 +132,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageUpdateAutomation
 metadata:
   name: backend-update-automation
+  namespace: flux-system
 spec:
   interval: 1m0s
   sourceRef:
