@@ -7,7 +7,7 @@ spec:
     app: fastapi-backend
   type: ClusterIP
   ports:
-    - port: 8000
-      targetPort: 8000
+    - port: 80
+      targetPort: http
       protocol: TCP
       name: http

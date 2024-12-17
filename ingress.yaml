@@ -6,23 +6,23 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: api.news-fusion.ru
-    http:
-      paths:
-      - path: /(.*)
-        pathType: Prefix
-        backend:
-          service:
-            name: fastapi-backend-svc
-            port:
-              number: 8000
-  - host: news-fusion.ru
-    http:
-      paths:
-      - path: /(.*)
-        pathType: Prefix
-        backend:
-          service:
-            name: frontend-svc
-            port:
-              number: 5173
+    - host: api.news-fusion.ru
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: fastapi-backend-svc
+                port:
+                  name: http
+    - host: news-fusion.ru
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend-svc
+                port:
+                  name: http

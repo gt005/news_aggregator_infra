@@ -23,16 +23,6 @@ spec:
       - name: frontend
         image: gt005/news_aggregator_frontend:60f0b711b46ae2bb54c3c7fe84c211f0db2eb512
         ports:
-          - containerPort: 5173
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: 5173
-          initialDelaySeconds: 5
-          periodSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 5173
-          initialDelaySeconds: 15
-          periodSeconds: 20
+          - name: http
+            containerPort: 5173
+            protocol: TCP

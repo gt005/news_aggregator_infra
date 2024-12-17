@@ -7,7 +7,7 @@ spec:
     app: frontend
   type: ClusterIP
   ports:
-    - port: 5173
-      targetPort: 5173
+    - port: 80
+      targetPort: http
       protocol: TCP
       name: http
