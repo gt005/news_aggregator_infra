@@ -1,27 +1,27 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: news-fusion-ingress
+  name: my-app-ingress
   namespace: default
   annotations:
-    kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.entrypoints: web
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
+  ingressClassName: nginx
   rules:
-    - host: news-fusion.ru
-      http:
-        paths:
-          - path: /api
-            pathType: Prefix
-            backend:
-              service:
-                name: fastapi-backend-svc
-                port:
-                  number: 8000
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: frontend-svc
-                port:
-                  number: 5173
+  - host: news-fusion.ru
+    http:
+      paths:
+      - path: /api/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: fastapi-backend-svc
+            port:
+              number: 8000
+      - path: /(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend-svc
+            port:
+              number: 5173
