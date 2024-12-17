@@ -1,3 +1,123 @@
+# website parsing service#########################################################
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: website-parsing-service
+spec:
+  image: docker.io/gt005/news_aggregator_website_parser
+  interval: 1m0s
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: website-parsing-service
+spec:
+  imageRepositoryRef:
+    name: website-parsing-service
+  filterTags:
+    pattern: "^(?P<commit>[a-f0-9]{40})$"
+    extract: "$commit"
+  policy:
+    numerical:
+      order: asc
+################################################################################
+---
+# parser telegram #########################################################
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: parser-telegram
+spec:
+  image: docker.io/gt005/news_aggregator_telegram_parser
+  interval: 1m0s
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: parser-telegram
+spec:
+  imageRepositoryRef:
+    name: parser-telegram
+  filterTags:
+    pattern: "^(?P<commit>[a-f0-9]{40})$"
+    extract: "$commit"
+  policy:
+    numerical:
+      order: asc
+################################################################################
+---
+# frontend #########################################################
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: frontend
+spec:
+  image: docker.io/gt005/news_aggregator_frontend
+  interval: 1m0s
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: frontend
+spec:
+  imageRepositoryRef:
+    name: frontend
+  filterTags:
+    pattern: "^(?P<commit>[a-f0-9]{40})$"
+    extract: "$commit"
+  policy:
+    numerical:
+      order: asc
+################################################################################
+---
+# backend fastapi #########################################################
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: backend
+spec:
+  image: docker.io/gt005/news_aggregator_fastapi_backend
+  interval: 1m0s
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: backend
+spec:
+  imageRepositoryRef:
+    name: backend
+  filterTags:
+    pattern: "^(?P<commit>[a-f0-9]{40})$"
+    extract: "$commit"
+  policy:
+    numerical:
+      order: asc
+################################################################################
+---
+# backend news data processor #########################################################
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: backend-news-data-processor
+spec:
+  image: docker.io/gt005/news_aggregator_backend_news_data_processor
+  interval: 1m0s
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: backend-news-data-processor
+spec:
+  imageRepositoryRef:
+    name: backend-news-data-processor
+  filterTags:
+    pattern: "^(?P<commit>[a-f0-9]{40})$"
+    extract: "$commit"
+  policy:
+    numerical:
+      order: asc
+################################################################################
+---
 apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageUpdateAutomation
 metadata:
