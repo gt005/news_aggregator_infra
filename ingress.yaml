@@ -5,18 +5,13 @@ metadata:
   namespace: default
   annotations:
     kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/router.tls.certresolver: letsencrypt
+    traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
-  tls:
-    - hosts:
-        - news-fusion.ru
-      secretName: news-fusion-tls
   rules:
     - host: news-fusion.ru
       http:
         paths:
-          - path: /api/
+          - path: /api
             pathType: Prefix
             backend:
               service:
