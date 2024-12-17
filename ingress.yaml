@@ -4,10 +4,14 @@ metadata:
   name: my-app-ingress
   namespace: default
   annotations:
-    cert-manager.io/issuer: letsencrypt-prod
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    kubernetes.io/ingress.class: "nginx"
 spec:
-  ingressClassName: nginx
+  tls:
+    - hosts:
+      - api.news-fusion.ru
+      - news-fusion.ru
+      secretName: news-fusion-tls
   rules:
     - host: api.news-fusion.ru
       http:
@@ -29,9 +33,3 @@ spec:
                 name: frontend-svc
                 port:
                   number: 80
-
-tls:
-  - hosts:
-    - api.news-fusion.ru
-    - news-fusion.ru
-    secretName: news-fusion-tls
