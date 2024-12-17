@@ -7,9 +7,6 @@ resources:
   - deployment.yaml
   - service.yaml
   - migrate-job.yaml
-  - image-automation/image-repository.yaml
-  - image-automation/image-policy.yaml
-  - image-automation/image-update-automation.yaml
 
 configMapGenerator:
   - name: backend-config

@@ -12,3 +12,4 @@ resources:
   - apps/parser-telegram
   - apps/backend-news-data-processor
   - ingress.yaml
+  - image-update-automation.yaml

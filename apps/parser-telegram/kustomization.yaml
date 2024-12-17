@@ -5,9 +5,6 @@ namespace: default
 
 resources:
   - deployment.yaml
-  - image-automation/image-repository.yaml
-  - image-automation/image-policy.yaml
-  - image-automation/image-update-automation.yaml
 
 generatorOptions:
   disableNameSuffixHash: true

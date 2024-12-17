@@ -1,19 +1,14 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageUpdateAutomation
 metadata:
-  name: frontend-update-automation
+  name: staging
 spec:
-  imageRepositoryRef:
-    name: frontend
-  update:
-    strategy: Setters
-    fieldRef:
-      apiVersion: apps/v1
-      kind: Deployment
-      name: frontend
-      namespace: default
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: news-aggregator-infra
+    namespace: flux-system
   git:
-    repository: https://github.com/gt005/news_aggregator_infra.git
     checkout:
       ref:
         branch: main
@@ -24,5 +19,8 @@ spec:
       messageTemplate: "{{range .Updated.Images}}{{println .}}{{end}}"
     push:
       branch: main
-    secretRef:
-      name: git-credentials
+  update:
+    path: /apps
+    strategy: Setters
+  secretRef:
+    name: git-credentials
